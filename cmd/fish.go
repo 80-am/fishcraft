@@ -19,7 +19,7 @@ func Fish(finder BobberFinder) {
 				loot(pos)
 				break Wait
 			}
-			// time.Sleep(100 * time.Millisecond)
+			time.Sleep(time.Duration(rand.Intn(1100 - 950 + 1) + 1100) * time.Millisecond)
 		}
 	}
 	randomSleep()
