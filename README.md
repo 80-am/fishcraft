@@ -20,7 +20,7 @@ key: "0"
 debug: false
 ```
 
-Start the application and focus your WoW window with the character standing at a fishing spot fully zoomed in (FPV).
+Start the application and focus your WoW window with the character standing at a fishing spot fully zoomed in (FPV) for optimal performance.
 
 For now the World of Warcraft window will need to be focused at all time.
 
