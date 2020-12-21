@@ -1,8 +1,10 @@
 package cmd
 
 import (
+	"time"
 	"image"
 	"math"
+	"github.com/go-vgo/robotgo"
 )
 
 // BaitDetector to find the bait
@@ -19,6 +21,17 @@ type BaitDetectorImpl struct {
 // CreateBaitDetector create the detector
 func CreateBaitDetector() BaitDetector {
 	return newBaitDetectorImpl()
+}
+
+// ApplyBait if a keybind is defined
+func ApplyBait() {
+	if BaitKey != "" {
+		robotgo.KeyTap(BaitKey)
+		for range time.Tick(time.Minute * 30) {
+			InfoLogger.Println("Applying bait.")
+			robotgo.KeyTap(BaitKey)
+		}
+	}
 }
 
 // CheckBait if movement

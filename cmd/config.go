@@ -8,6 +8,7 @@ import (
 
 // Config to use
 type Config struct {
+    Bait      string `yaml:"bait"`
     Debug     bool   `yaml:"debug"`
     Key	      string `yaml:"key"`
     LogPath   string `yaml:"log"`

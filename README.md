@@ -18,11 +18,16 @@ Copy [config.yml.sample](config.yml.sample) into config.yml and fill in your des
 ```yml
 key: "0"
 debug: false
+threshold: 25
 ```
 
 Start the application and focus your WoW window with the character standing at a fishing spot fully zoomed in (FPV) for optimal performance.
 
 For now the World of Warcraft window will need to be focused at all time.
+
+## Troubleshooting
+
+If you are having trouble detecting the bobber movement, try adjusting the threshold value.
 
 ## Pipeline
 

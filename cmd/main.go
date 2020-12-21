@@ -12,6 +12,8 @@ import (
 var c Config
 var config string
 var logPath string
+// BaitKey where bait is binded
+var BaitKey string
 // Key binding of fishing spell
 var Key string
 // Debug for better logging
@@ -30,6 +32,7 @@ func init() {
 	flag.BoolVar(&Debug, "debug", false, "Debug option")
 	flag.Parse()
 	c.GetConfig(config)
+	BaitKey = c.Bait
 	Key = c.Key
 	Debug = Debug || c.Debug
 	Threshold = c.Threshold
@@ -69,6 +72,7 @@ func Main() {
 	}
 
 	finder := CreateBobberFinder()
+	ApplyBait()
 	for {
 		Fish(finder)
 	}

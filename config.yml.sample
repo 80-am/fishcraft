@@ -1,5 +1,6 @@
 # WoW
 key: "0" # Your in-game keybind to the Fishing spell
+bait: "9" # Your in-game keybind to your bait (30min)
 threshold: 25 # The threshold value for the bobber, 25 is usually good for all lightnings
 
 debug: false
