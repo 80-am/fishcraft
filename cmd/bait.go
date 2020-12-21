@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"image"
 	"math"
 )
@@ -26,14 +25,16 @@ func CreateBaitDetector() BaitDetector {
 func (bait *BaitDetectorImpl) CheckBait(position *image.Point) bool {
 	if nil == position {
 		if Debug {
-			fmt.Println("Bobber not deteted.")
+			DebugLogger.Println("Bobber not deteted.")
 		}
+		NotFound++
 		return false
 	}
 	if bait.once && (math.Abs(float64(bait.left - position.X)) > 50 || math.Abs(float64(bait.top - position.Y)) > 50) {
 		if Debug {
-			fmt.Printf("Found something outside outlier at %v.\n", position)
+			DebugLogger.Printf("Found something outside outlier at %v.\n", position)
 		}
+		NotFound++
 		return false
 	}
 
@@ -61,9 +62,9 @@ func (bait *BaitDetectorImpl) detect() bool {
 	w := bait.right - bait.left
 	h := bait.bottom - bait.top
 	if Debug {
-		fmt.Printf("Bobber positioned at [%v, %v - %v, %v].\n", x, y, w, h)
+		DebugLogger.Printf("Bobber positioned at [%v, %v - %v, %v].\n", x, y, w, h)
 	}
-	return w >= 20 || h >= 20
+	return w >= Threshold || h >= Threshold
 }
 
 func newBaitDetectorImpl() BaitDetector {

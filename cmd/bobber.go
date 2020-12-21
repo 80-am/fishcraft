@@ -36,9 +36,8 @@ func (bf bobberFinderImpl) FindBobber(screen *robotgo.CBitmap, knownPosition *im
 func (bf bobberFinderImpl) check(screen *robotgo.CBitmap, x int, y int) *image.Point {
 	if isRed(screen, x, y) {
 		redFeather := search(screen, x, y, 30, isRed)
-		blueFeather := search(screen, x, y, 30, isBlue)
 		hook := search(screen, x, y, 15, isHook)
-		if redFeather && blueFeather && hook {
+		if redFeather && hook {
 			return &image.Point{X: x, Y: y}
 		}
 	}
@@ -48,28 +47,6 @@ func (bf bobberFinderImpl) check(screen *robotgo.CBitmap, x int, y int) *image.P
 func color(screen *robotgo.CBitmap, x int, y int) (r int, g int, b int) {
 	color := robotgo.CHex(robotgo.GetColor(robotgo.ToMMBitmapRef(*screen), x, y))
 	return int((color >> 16) & 0xFF), int((color >> 8) & 0xFF), int((color) & 0xFF)
-}
-
-func isBlue(screen *robotgo.CBitmap, a, c int) bool {
-	r, g, b := color(screen, a, c)
-	blue := 1.1
-	minBlue := 60
-	rgMin := 0.8
-	rgMax := 1.2
-	rg := float64(r) / float64(g)
-	return b >= minBlue && b > int(float64(r)*blue) && b > int(float64(g)*blue) && g > r && rg >= rgMin && rg <= rgMax
-}
-func isBobber(screen *robotgo.CBitmap, a, c int) bool {
-	bobber := 1.1
-	minBlue := 45
-	r, g, b := color(screen, a, c)
-	return b >= minBlue && r > int(float64(b)*bobber) && g > int(float64(b)*bobber)
-}
-func isGlow(screen *robotgo.CBitmap, a, c int) bool {
-	glow := 1.05
-	minBlue := 55
-	r, g, b := color(screen, a, c)
-	return b >= minBlue && r > int(float64(b)*glow) && g > int(float64(b)*glow)
 }
 
 func isHook(screen *robotgo.CBitmap, a, c int) bool {

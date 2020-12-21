@@ -8,8 +8,10 @@ import (
 
 // Config to use
 type Config struct {
-    Debug bool   `yaml:"debug"`
-	Key	  string `yaml:"key"`
+    Debug     bool   `yaml:"debug"`
+    Key	      string `yaml:"key"`
+    LogPath   string `yaml:"log"`
+    Threshold int    `yaml:"threshold"`
 }
 
 // GetConfig of user
