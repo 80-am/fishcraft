@@ -72,7 +72,7 @@ func Main() {
 	}
 
 	finder := CreateBobberFinder()
-	ApplyBait()
+	go ApplyBait()
 	for {
 		Fish(finder)
 	}

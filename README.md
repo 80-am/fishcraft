@@ -29,14 +29,6 @@ For now the World of Warcraft window will need to be focused at all time.
 
 If you are having trouble detecting the bobber movement, try adjusting the threshold value.
 
-## Pipeline
-
-Things to be added in the future:
-- [ ] Have the progam run "unfocused".
-- [ ] Add option to sell using a mount / repair bot.
-- [ ] Log loot.
-- [ ] Attach lure.
-
 ## Disclaimer
 
 This bot might interfere with Blizzards policy against Third-Party software.
